@@ -46,8 +46,8 @@ st.markdown(
     - Interactive Web Applications  
     - Research and Technical Writing  
     
-    #*(You can easily update or expand this section as your interests grow.)*
     """
+    #*(You can easily update or expand this section as your interests grow.)*
 )
 
 st.markdown("---")
