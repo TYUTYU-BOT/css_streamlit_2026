@@ -50,9 +50,9 @@ with col2:
         <div style='display:flex; align-items:center; gap:12px; flex-wrap:wrap;'>
             <div>🎓 Student</div>
             <div>📍 South Africa</div>
-            <div>✉️ <a href='mailto:your.email@domain.com'>your.email@domain.com</a></div>
-            <div>🔗 <a href='https://github.com/your-handle' target='_blank'>GitHub</a> ·
-                 <a href='https://www.linkedin.com/in/your-handle' target='_blank'>LinkedIn</a>
+            <div>✉️ <a href='mailto:your.email@domain.com'>asekhonatyutyuza@gmail.com</a></div>
+            <div>🔗 <div>🔗 <a href="https://github.com/TYUTYU-BOT" target="_blank">GitHub</a></div>·
+                <a href="https://www.linkedin.com/in/asekhona-tyutyuza-7504162b3" target="_blank">Linked
             </div>
         </div>
         """,
