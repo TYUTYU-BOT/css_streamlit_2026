@@ -1,6 +1,7 @@
 import streamlit as st
 from PIL import Image, UnidentifiedImageError
 from pathlib import Path
+from typing import Optional
 import re
 
 # ---------------------------------------------------------
@@ -33,7 +34,7 @@ def badge(label, color="#4F46E5"):
     </span>
     """
 
-def show_image(path: Path, caption: str = "", use_container_width=True, fallback: Path | None = None):
+def show_image(path: Path, caption: str = "", use_container_width=True, fallback: Optional[Path] = None):
     """Safely show an image; optionally use a fallback if invalid or missing."""
     if path.exists():
         try:
@@ -41,7 +42,7 @@ def show_image(path: Path, caption: str = "", use_container_width=True, fallback
                 st.image(img, caption=caption, use_container_width=use_container_width)
                 return True
         except UnidentifiedImageError:
-            st.warning(f"Found '{path.as_posix()}' but it is not a valid PNG.")
+            st.warning(f"Found '{path.as_posix()}' but it is not a valid image file (re-export as PNG).")
         except Exception as e:
             st.error(f"Unexpected error reading {path.name}: {e}")
     else:
@@ -49,8 +50,11 @@ def show_image(path: Path, caption: str = "", use_container_width=True, fallback
 
     # fallback path
     if fallback and fallback.exists():
-        with Image.open(fallback) as img:
-            st.image(img, caption="(Placeholder)", use_container_width=use_container_width)
+        try:
+            with Image.open(fallback) as img:
+                st.image(img, caption="(Placeholder)", use_container_width=use_container_width)
+        except Exception:
+            pass
         return False
     return False
 
@@ -214,4 +218,17 @@ with st.form("contact_form"):
             st.success("Thanks! This is a demo form — connect a real endpoint to receive messages.")
 
 
+
+# ---------------------------------------------------------
+# Optional: quick diagnostics (expand if you need to debug images)
+# ---------------------------------------------------------
+with st.expander("Debug (images)"):
+    st.write(
+        {
+            "BASE_DIR": str(BASE_DIR),
+            "ASSETS": str(ASSETS),
+            "avatar_exists": AVATAR.exists(),
+            "banner_exists": BANNER.exists(),
+            "fallback_exists": FALLBACK.exists(),
+        }
     )
