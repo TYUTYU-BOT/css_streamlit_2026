@@ -64,5 +64,4 @@ st.markdown(
     """
 )
 
-# Footer
-#st.caption("Built with Streamlit • Continuously evolving as I learn and grow")
+
