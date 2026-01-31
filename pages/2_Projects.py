@@ -13,19 +13,19 @@ st.title("🧪 Projects")
 # Introduction
 st.markdown(
     """
-    This page highlights a selection of **academic and personal projects** I have worked on.
-    These projects reflect my interests in **data analysis**, **visualization**, and
-    building **interactive applications** with Python and Streamlit.
+    This page highlights a selection of **academic and personal projects** and **concepts** I’m exploring.
+    These reflect my interests in **data analysis**, **visualization**, and building **interactive applications**
+    with Python and Streamlit.
 
-    Each project focuses on practical problem-solving and applying concepts learned
-    through coursework and independent exploration.
+    Each project focuses on practical problem-solving and applying concepts learned through coursework
+    and independent exploration.
     """
 )
 
 st.markdown("---")
 
 # =========================================================
-# FEATURED / HACKATHON PROJECT
+# FEATURED / HACKATHON PROJECT 
 # =========================================================
 st.subheader("🏆 Featured: MAISH 2025 Hackathon — 1st Place")
 
@@ -33,7 +33,7 @@ st.markdown(
     """
     **Project:** AI‑powered agricultural solution  
     **Outcome:** 🥇 First Place (3‑day hackathon)  
-    **Focus:** Predictive insights for smarter, more sustainable farming  
+    **Focus:** Predictive insights for smarter, more sustainable farming
     """
 )
 
@@ -51,7 +51,7 @@ with st.expander("What we built (overview)"):
         """
     )
 
-# Optional buttons (add your links if available)
+# Optional action buttons (replace st.info with links when ready)
 cols = st.columns(3)
 with cols[0]:
     if st.button("View summary", key="maish_summary"):
@@ -66,67 +66,63 @@ with cols[2]:
 st.markdown("---")
 
 # =========================================================
-# PROJECT 1
+# CONCEPT / PLANNED PROJECTS (NOT YET BUILT)
 # =========================================================
-st.subheader("📊 Student Performance Dashboard")
+st.subheader("🧩 Concept & Planned Projects")
+st.caption("These are project ideas and learning exercises I understand and plan to implement.")
 
+# ---------- Concept Project 1 ----------
+st.markdown("### 📊 Concept Project: Student Performance Dashboard")
 st.markdown(
     """
-    **Description:**  
-    An interactive dashboard built with **Streamlit** to explore and visualize student
-    performance data. The application allows users to filter data dynamically and
-    gain insights through clear, informative charts.
+    **Overview:**  
+    A conceptual Streamlit dashboard to explore student performance data using filters and visualizations.
 
-    **Key Features:**
-    - Interactive filters for exploring subsets of data  
-    - Visual summaries using charts and metrics  
-    - User‑friendly layout for non‑technical users  
+    **What it would include:**
+    - Interactive filters (subject, grade range, time period)
+    - Bar/line charts for trends and distribution
+    - Summary metrics (average score, pass rate)
 
-    **Tools & Skills:** Python, Streamlit, Data Visualization
+    **Tools & Skills (planned):** Python, pandas, Streamlit, data visualization
     """
 )
 
-# Optional CTA buttons (plug in links later)
+# Optional buttons (placeholders)
 c1, c2 = st.columns(2)
 with c1:
-    if st.button("Open repo", key="p1_repo"):
-        st.info("Add the GitHub link here.")
+    if st.button("Planned repo", key="concept_perf_repo"):
+        st.info("Add a GitHub link once you start this project.")
 with c2:
-    if st.button("Live demo", key="p1_demo"):
-        st.info("Add the Streamlit Cloud link here.")
+    if st.button("Design notes", key="concept_perf_notes"):
+        st.info("Link a Notion/Docs page with your design notes when available.")
 
 st.markdown("---")
 
-# =========================================================
-# PROJECT 2
-# =========================================================
-st.subheader("📂 Research Paper Organizer")
-
+# ---------- Planned Project 2 ----------
+st.markdown("### 📂 Planned Project: Research Paper Organizer")
 st.markdown(
     """
-    **Description:**  
-    A lightweight tool designed to help students and researchers organize academic
-    papers efficiently. The app supports tagging, filtering, and exporting reading lists,
-    making it useful for literature reviews and research planning.
+    **Overview:**  
+    A simple tool to manage literature review items (title, authors, year, tags, notes) with search/filter and export.
 
-    **Key Features:**
-    - Tagging and categorization of papers  
-    - Simple search and filtering  
-    - Export functionality (e.g., CSV or JSON)  
+    **What it would include:**
+    - Add/edit entries via a form
+    - Tagging and quick search
+    - Export reading list to CSV/JSON
 
-    **Tools & Skills:** Python, Streamlit, Data Management
+    **Tools & Skills (planned):** Python, Streamlit, basic data storage (CSV/SQLite)
     """
 )
 
-# Optional CTA buttons (plug in links later)
+# Optional buttons (placeholders)
 c3, c4 = st.columns(2)
 with c3:
-    if st.button("Open repo", key="p2_repo"):
-        st.info("Add the GitHub link here.")
+    if st.button("Planned repo", key="concept_rpo_repo"):
+        st.info("Add the GitHub link once you begin implementation.")
 with c4:
-    if st.button("Live demo", key="p2_demo"):
-        st.info("Add the Streamlit Cloud link here.")
-
+    if st.button("Feature backlog", key="concept_rpo_backlog"):
+        st.info("Link a backlog/todo list when ready.")
+        
 st.markdown("---")
 
 # =========================================================
@@ -141,6 +137,7 @@ st.markdown(
 )
 
 st.caption("Projects are continuously updated as part of my learning journey.")
+
 
 # Footer
 #st.caption("Projects are continuously updated as part of my learning journey.")
