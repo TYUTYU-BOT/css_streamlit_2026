@@ -76,4 +76,4 @@ st.markdown(
 )
 
 # Footer
-st.caption("Projects are continuously updated as part of my learning journey.")
+#st.caption("Projects are continuously updated as part of my learning journey.")
