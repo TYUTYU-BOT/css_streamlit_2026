@@ -213,18 +213,5 @@ with st.form("contact_form"):
             # This is a demo: replace with an integration (e.g., Formspree, EmailJS, webhook)
             st.success("Thanks! This is a demo form — connect a real endpoint to receive messages.")
 
-st.caption("Built with ❤️ using Streamlit. Customize this page in `streamlit_app.py`.")
 
-# ---------------------------------------------------------
-# Optional: quick diagnostics (expand if you need to debug images)
-# ---------------------------------------------------------
-with st.expander("Debug (images)"):
-    st.write(
-        {
-            "BASE_DIR": str(BASE_DIR),
-            "ASSETS": str(ASSETS),
-            "avatar_exists": AVATAR.exists(),
-            "banner_exists": BANNER.exists(),
-            "fallback_exists": FALLBACK.exists(),
-        }
     )
