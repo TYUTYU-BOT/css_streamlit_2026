@@ -14,8 +14,9 @@ BASE_DIR = Path(__file__).parent
 ASSETS = BASE_DIR / "assets"
 
 def badge(label, color="#4F46E5"):
+    # Use real HTML since unsafe_allow_html=True where rendered
     return f"""
-    <span style='background:{color}; padding:4px 10px; border-radius:999px; color:white; font-size:0.85rem; margin-right:6px;'>
+    <span style="background:{color}; padding:4px 10px; border-radius:999px; color:white; font-size:0.85rem; margin-right:6px;">
         {label}
     </span>
     """
@@ -27,10 +28,16 @@ with col1:
     avatar_path = ASSETS / "avatar.png"
     if avatar_path.exists():
         try:
-            avatar = Image.open(avatar_path)
-            st.image(avatar, caption="Asekhona Tyutyuza", use_container_width=True)
+            # Use context manager to safely open the image
+            with Image.open(avatar_path) as avatar:
+                st.image(avatar, caption="Asekhona Tyutyuza", use_container_width=True)
         except UnidentifiedImageError:
-            st.warning("Couldn't read assets/avatar.png. Please upload a valid PNG image.")
+            st.error(
+                "Found 'assets/avatar.png' but it isn't a valid PNG. "
+                "Please re-export it as a real PNG and upload again."
+            )
+        except Exception as e:
+            st.error(f"Unexpected error reading avatar.png: {e}")
     else:
         st.info("Add an avatar image to assets/avatar.png")
 
@@ -38,21 +45,26 @@ with col2:
     banner_path = ASSETS / "banner.png"
     if banner_path.exists():
         try:
+            # st.image happily accepts a str path
             st.image(str(banner_path), use_container_width=True)
         except UnidentifiedImageError:
-            st.warning("Couldn't read assets/banner.png. Please upload a valid PNG image.")
+            st.warning("Found assets/banner.png but it isn't a valid PNG.")
+        except Exception as e:
+            st.error(f"Unexpected error reading banner.png: {e}")
     else:
         st.info("Add a banner image to assets/banner.png")
 
     st.markdown("")  # spacer
     st.markdown(
         """
-        <div style='display:flex; align-items:center; gap:12px; flex-wrap:wrap;'>
+        <div style="display:flex; align-items:center; gap:12px; flex-wrap:wrap;">
             <div>🎓 Student</div>
             <div>📍 South Africa</div>
-            <div>✉️ <a href='mailto:asekhonatyutyuza@gmail.com'>asekhonatyutyuza@gmail.com</a></div>
-            <div>🔗 
-                <a href="https://github.com/TYUTYU-BOT" target="_blank" rel="noopener noreferrer">GitHub</a> ·
+            <div>✉️ <a href="mailto:asekhonatyutyuza@gmail.com">asekhonatyutyuza@gmail.com</a></div>
+            <div>
+                🔗
+                <a href="https://github.com/TYUTYU-BOT" target="_blank" rel="noopener noreferrer">GitHub</a>
+                ·
                 <a href="https://www.linkedin.com/in/asekhona-tyutyuza-7504162b3" target="_blank" rel="noopener noreferrer">LinkedIn</a>
             </div>
         </div>
@@ -121,7 +133,7 @@ import streamlit as st
 st.title('Hello Streamlit')
 st.slider('Try me', 0, 10, 5)
             """,
-            language='python',
+            language="python",
         )
 with proj2:
     st.markdown("#### 🗂️ Research Paper Organizer")
