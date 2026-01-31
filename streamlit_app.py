@@ -1,5 +1,5 @@
 import streamlit as st
-from PIL import Image
+from PIL import Image, UnidentifiedImageError
 from pathlib import Path
 
 st.set_page_config(
@@ -10,31 +10,37 @@ st.set_page_config(
 )
 
 # ---------- Helper ----------
-ASSETS = Path('assets')
-
+ASSETS = Path("assets")
 
 def badge(label, color="#4F46E5"):
+    # Use real HTML tags (unsafe_allow_html=True is set where we render)
     return f"""
     <span style='background:{color}; padding:4px 10px; border-radius:999px; color:white; font-size:0.85rem; margin-right:6px;'>
         {label}
     </span>
     """
 
-
 # ---------- Header ----------
 col1, col2 = st.columns([1, 3], gap="large")
+
 with col1:
-    avatar_path = ASSETS / 'avatar.png'
+    avatar_path = ASSETS / "avatar.png"
     if avatar_path.exists():
-        avatar = Image.open(avatar_path)
-        st.image(avatar, caption="Asekhona Tyutyuza", use_container_width=True)
+        try:
+            avatar = Image.open(avatar_path)
+            st.image(avatar, caption="Asekhona Tyutyuza", use_container_width=True)
+        except UnidentifiedImageError:
+            st.warning("Couldn't read assets/avatar.png. Please upload a valid PNG image.")
     else:
         st.info("Add an avatar image to assets/avatar.png")
 
 with col2:
-    banner_path = ASSETS / 'banner.png'
+    banner_path = ASSETS / "banner.png"
     if banner_path.exists():
-        st.image(str(banner_path))
+        try:
+            st.image(str(banner_path), use_container_width=True)
+        except UnidentifiedImageError:
+            st.warning("Couldn't read assets/banner.png. Please upload a valid PNG image.")
     else:
         st.info("Add a banner image to assets/banner.png")
 
