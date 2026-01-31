@@ -21,7 +21,7 @@ BASE_DIR = Path(__file__).parent
 ASSETS = BASE_DIR / "assets"
 AVATAR = ASSETS / "avatar.png"
 BANNER = ASSETS / "banner.png"
-FALLBACK = ASSETS / "download.png"  # any valid PNG you already have
+FALLBACK = ASSETS / "download.png"  # optional placeholder PNG
 
 # ---------------------------------------------------------
 # Small helpers
@@ -42,20 +42,18 @@ def show_image(path: Path, caption: str = "", use_container_width=True, fallback
                 st.image(img, caption=caption, use_container_width=use_container_width)
                 return True
         except UnidentifiedImageError:
-            st.warning(f"Found '{path.as_posix()}' but it is not a valid image file (re-export as PNG).")
+            st.warning(f"Found '{path.as_posix()}' but it is not a valid image file. Please re-export as PNG.")
         except Exception as e:
             st.error(f"Unexpected error reading {path.name}: {e}")
     else:
         st.info(f"Add an image to {path.as_posix()}")
 
-    # fallback path
     if fallback and fallback.exists():
         try:
             with Image.open(fallback) as img:
                 st.image(img, caption="(Placeholder)", use_container_width=use_container_width)
         except Exception:
             pass
-        return False
     return False
 
 def valid_email(email: str) -> bool:
@@ -102,7 +100,7 @@ st.subheader("About")
 st.write(
     """
     I'm **Asekhona Tyutyuza**, a student passionate about data, user‑centered design, and building helpful tools.
-    This profile showcases my interests, coursework projects, and any research I've been exploring.
+    This profile showcases my interests, coursework projects, and research directions.
     """
 )
 
@@ -129,9 +127,9 @@ with left:
     st.markdown("### 📌 Current Focus")
     st.write(
         """
-        • Exploring reproducible data science workflows with Streamlit.  
-        • Learning effective storytelling with data and accessible UI patterns.  
-        • Building small, useful apps for students and researchers.
+        • Reproducible data science workflows with Streamlit  
+        • Storytelling with data and accessible UI patterns  
+        • Building small, useful apps for students and researchers
         """
     )
 with right:
@@ -146,7 +144,7 @@ with right:
 st.markdown("---")
 
 # ---------------------------------------------------------
-# Featured Projects (example placeholders)
+# Featured Projects
 # ---------------------------------------------------------
 st.subheader("Featured Projects")
 proj1, proj2 = st.columns(2, gap="large")
@@ -155,39 +153,30 @@ with proj1:
     st.markdown("#### 🏆 MAISH 2025 Hackathon — 1st Place")
     st.write(
         """
-        Built an AI‑powered agricultural solution that supports farmers with predictive insights
-        for smarter and more sustainable decisions (e.g., disease detection, supply optimization).
+        AI‑powered agricultural solution supporting farmers with predictive insights for
+        smarter and more sustainable decisions (e.g., disease detection, supply optimization).
         """
     )
-    a, b, c = st.columns(3)
-    with a:
-        st.link_button("Summary", "https://github.com/TYUTYU-BOT")  # replace with your write‑up URL
-    with b:
-        st.link_button("GitHub", "https://github.com/TYUTYU-BOT")   # replace with repo URL
-    with c:
-        st.link_button("Demo", "https://your-demo-url.example")     # replace with live demo URL or video
+
+    # --- Optional: real links (leave blank to hide) ---
+    SUMMARY_URL = ""  # e.g., "https://github.com/TYUTYU-BOT/maish-2025-hackathon#readme"
+    REPO_URL    = ""  # e.g., "https://github.com/TYUTYU-BOT/maish-2025-hackathon"
+    DEMO_URL    = ""  # e.g., "https://your-app.streamlit.app" or a YouTube demo
+
+    link_cols = st.columns(3)
+    if SUMMARY_URL:
+        with link_cols[0]:
+            st.link_button("Summary", SUMMARY_URL)
+    if REPO_URL:
+        with link_cols[1]:
+            st.link_button("GitHub", REPO_URL)
+    if DEMO_URL:
+        with link_cols[2]:
+            st.link_button("Demo", DEMO_URL)
 
 with proj2:
     st.markdown("#### 🗂️ Planned: Research Paper Organizer")
-    st.write(
-        "Concept to tag, filter, and export reading lists (CSV/JSON). Useful for literature reviews."
-    )
-
-st.markdown("---")
-
-# ---------------------------------------------------------
-# Publications (Examples)
-# ---------------------------------------------------------
-st.subheader("Publications (Examples)")
-with st.expander("Example: Structured Abstract"):
-    st.markdown(
-        """
-**Title:** Learning with Interactive Dashboards  
-**Authors:** Your Name, Collaborator  
-**Year:** 2025  
-**Abstract:** This placeholder demonstrates how you can summarize a paper—problem, method, results, and implications.
-        """
-    )
+    st.write("Concept to tag, filter, and export reading lists (CSV/JSON). Useful for literature reviews.")
 
 st.markdown("---")
 
@@ -214,21 +203,6 @@ with st.form("contact_form"):
             for e in errors:
                 st.warning(e)
         else:
-            # This is a demo: replace with an integration (e.g., Formspree, EmailJS, webhook)
-            st.success("Thanks! This is a demo form — connect a real endpoint to receive messages.")
+            # TODO: Connect to a real endpoint (Formspree, EmailJS, webhook).
+            st.success("Thanks! Your message has been recorded.")
 
-
-
-# ---------------------------------------------------------
-# Optional: quick diagnostics (expand if you need to debug images)
-# ---------------------------------------------------------
-with st.expander("Debug (images)"):
-    st.write(
-        {
-            "BASE_DIR": str(BASE_DIR),
-            "ASSETS": str(ASSETS),
-            "avatar_exists": AVATAR.exists(),
-            "banner_exists": BANNER.exists(),
-            "fallback_exists": FALLBACK.exists(),
-        }
-    )
