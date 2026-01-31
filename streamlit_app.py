@@ -10,10 +10,10 @@ st.set_page_config(
 )
 
 # ---------- Helper ----------
-ASSETS = Path("assets")
+BASE_DIR = Path(__file__).parent
+ASSETS = BASE_DIR / "assets"
 
 def badge(label, color="#4F46E5"):
-    # Use real HTML tags (unsafe_allow_html=True is set where we render)
     return f"""
     <span style='background:{color}; padding:4px 10px; border-radius:999px; color:white; font-size:0.85rem; margin-right:6px;'>
         {label}
@@ -50,9 +50,10 @@ with col2:
         <div style='display:flex; align-items:center; gap:12px; flex-wrap:wrap;'>
             <div>🎓 Student</div>
             <div>📍 South Africa</div>
-            <div>✉️ <a href='mailto:your.email@domain.com'>asekhonatyutyuza@gmail.com</a></div>
-            <div>🔗 <div>🔗 <a href="https://github.com/TYUTYU-BOT" target="_blank">GitHub</a></div>·
-                <a href="https://www.linkedin.com/in/asekhona-tyutyuza-7504162b3" target="_blank">Linked
+            <div>✉️ <a href='mailto:asekhonatyutyuza@gmail.com'>asekhonatyutyuza@gmail.com</a></div>
+            <div>🔗 
+                <a href="https://github.com/TYUTYU-BOT" target="_blank" rel="noopener noreferrer">GitHub</a> ·
+                <a href="https://www.linkedin.com/in/asekhona-tyutyuza-7504162b3" target="_blank" rel="noopener noreferrer">LinkedIn</a>
             </div>
         </div>
         """,
