@@ -7,6 +7,11 @@ st.set_page_config(
     layout="centered",
 )
 
+# --- External links (EDIT THESE) ---
+SUMMARY_URL = "https://github.com/TYUTYU-BOT/maish-2025-hackathon#readme"  # or Notion/Google Doc/PDF
+REPO_URL    = "https://github.com/TYUTYU-BOT/maish-2025-hackathon"
+DEMO_URL    = "https://your-app-url.streamlit.app"  # Streamlit Cloud or a YouTube demo
+
 # Page title
 st.title("🧪 Projects")
 
@@ -51,17 +56,57 @@ with st.expander("What we built (overview)"):
         """
     )
 
-# Optional action buttons (replace st.info with links when ready)
+# ---------------- Buttons (prefer link_button if available) ----------------
 cols = st.columns(3)
+
+# Try to use st.link_button (Streamlit ≥ 1.31). If unavailable, fall back to HTML buttons.
+def link_button_fallback(label: str, url: str):
+    st.markdown(
+        f"""
+        <a href="{url}" target="_blank" rel="noopener noreferrer"
+           style="display:inline-block; text-decoration:none; background:#0E1117;
+                  color:white; padding:0.5rem 0.85rem; border-radius:6px; border:1px solid #30363d;">
+            {label}
+        </a>
+        """,
+        unsafe_allow_html=True,
+    )
+
+# Feature-detect st.link_button
+HAS_LINK_BUTTON = hasattr(st, "link_button")
+
 with cols[0]:
-    if st.button("View summary", key="maish_summary"):
+    if SUMMARY_URL:
+        if HAS_LINK_BUTTON:
+            st.link_button("View summary", SUMMARY_URL)
+        else:
+            link_button_fallback("View summary", SUMMARY_URL)
+    else:
         st.info("Add a link to a write‑up or README when available.")
+
 with cols[1]:
-    if st.button("GitHub repo", key="maish_repo"):
-        st.info("Add a GitHub URL to the project repository when ready.")
+    if REPO_URL:
+        if HAS_LINK_BUTTON:
+            st.link_button("GitHub repo", REPO_URL)
+        else:
+            link_button_fallback("GitHub repo", REPO_URL)
+    else:
+        st.info("Add a GitHub URL when ready.")
+
 with cols[2]:
-    if st.button("Demo (if hosted)", key="maish_demo"):
-        st.info("Add a demo link if you deploy a prototype.")
+    if DEMO_URL and not DEMO_URL.endswith("streamlit.app"):
+        # Any URL is fine; just a gentle reminder to deploy when you can
+        if HAS_LINK_BUTTON:
+            st.link_button("Demo (hosted)", DEMO_URL)
+        else:
+            link_button_fallback("Demo (hosted)", DEMO_URL)
+    elif DEMO_URL:  # keep the link even if it's a placeholder
+        if HAS_LINK_BUTTON:
+            st.link_button("Demo (hosted)", DEMO_URL)
+        else:
+            link_button_fallback("Demo (hosted)", DEMO_URL)
+    else:
+        st.info("Add a demo link when you deploy a prototype.")
 
 st.markdown("---")
 
@@ -87,14 +132,11 @@ st.markdown(
     """
 )
 
-# Optional buttons (placeholders)
 c1, c2 = st.columns(2)
 with c1:
-    if st.button("Planned repo", key="concept_perf_repo"):
-        st.info("Add a GitHub link once you start this project.")
+    link_button_fallback("Planned repo", "https://github.com/TYUTYU-BOT")  # replace later
 with c2:
-    if st.button("Design notes", key="concept_perf_notes"):
-        st.info("Link a Notion/Docs page with your design notes when available.")
+    link_button_fallback("Design notes", "https://www.notion.so/")         # replace later
 
 st.markdown("---")
 
@@ -114,15 +156,12 @@ st.markdown(
     """
 )
 
-# Optional buttons (placeholders)
 c3, c4 = st.columns(2)
 with c3:
-    if st.button("Planned repo", key="concept_rpo_repo"):
-        st.info("Add the GitHub link once you begin implementation.")
+    link_button_fallback("Planned repo", "https://github.com/TYUTYU-BOT")  # replace later
 with c4:
-    if st.button("Feature backlog", key="concept_rpo_backlog"):
-        st.info("Link a backlog/todo list when ready.")
-        
+    link_button_fallback("Feature backlog", "https://www.notion.so/")      # replace later
+
 st.markdown("---")
 
 # =========================================================
@@ -137,4 +176,3 @@ st.markdown(
 )
 
 st.caption("Projects are continuously updated as part of my learning journey.")
-
