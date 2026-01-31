@@ -163,4 +163,4 @@ with st.form("contact_form"):
     if submitted:
         st.success("Thanks! This is a demo form—replace with a real endpoint (e.g., Formspree).")
 
-st.caption("Built with ❤️ using Streamlit. Customize this page in `streamlit_app.py`.")
+#st.caption("Built with ❤️ using Streamlit. Customize this page in `streamlit_app.py`.")
