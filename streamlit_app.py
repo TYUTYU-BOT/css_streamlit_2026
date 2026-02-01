@@ -19,8 +19,8 @@ st.set_page_config(
 # ---------------------------------------------------------
 BASE_DIR = Path(__file__).parent
 ASSETS = BASE_DIR / "assets"
-AVATAR = ASSETS / "download.png"
-BANNER = ASSETS / "download (1).png"
+AVATAR = ASSETS / "download (1).png"
+BANNER = ASSETS / "download.png"
 FALLBACK = ASSETS / "download.png"  # optional placeholder PNG
 
 # ---------------------------------------------------------
@@ -34,13 +34,11 @@ def badge(label, color="#4F46E5"):
     </span>
     """
 
-
 def show_image(path: Path, caption: str = "", use_container_width=True, fallback: Optional[Path] = None):
     """Safely show an image; optionally use a fallback if invalid or missing."""
     if path.exists():
         try:
             with Image.open(path) as img:
-                # Apply custom styles to the image to make it look more professional
                 st.image(img, caption=caption, use_container_width=use_container_width)
                 return True
         except UnidentifiedImageError:
@@ -70,27 +68,15 @@ def valid_email(email: str) -> bool:
 col1, col2 = st.columns([1, 3], gap="large")
 
 with col1:
-    st.markdown(
-        """<div style="text-align: center;">
-            <div style="border-radius: 50%; overflow: hidden; border: 4px solid #4F46E5;">
-                <img src="{}" alt="Avatar" style="width: 100%; height: auto;"/>
-            </div>
-        </div>""".format(AVATAR.as_posix()), 
-        unsafe_allow_html=True
-    )
+    show_image(AVATAR, caption="Asekhona Tyutyuza", fallback=FALLBACK)
 
 with col2:
-    st.markdown(
-        """<div style="text-align: center; padding: 20px; border: 3px solid #ddd; border-radius: 10px;">
-            <img src="{}" alt="Banner" style="width: 100%; height: auto; border-radius: 8px;"/>
-        </div>""".format(BANNER.as_posix()), 
-        unsafe_allow_html=True
-    )
+    show_image(BANNER, fallback=None)
 
     st.markdown("")  # spacer
     st.markdown(
         """
-        <div style="display:flex; justify-content:center; gap:12px; flex-wrap:wrap; line-height:1.6;">
+        <div style="display:flex; align-items:center; gap:12px; flex-wrap:wrap; line-height:1.6;">
             <div>🎓 Student</div>
             <div>📍 South Africa</div>
             <div>✉️ <a href="mailto:asekhonatyutyuza@gmail.com">asekhonatyutyuza@gmail.com</a></div>
