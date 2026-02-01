@@ -19,7 +19,7 @@ st.set_page_config(
 # ---------------------------------------------------------
 BASE_DIR = Path(__file__).parent
 ASSETS = BASE_DIR / "assets"
-AVATAR = ASSETS / "avatar.png"
+AVATAR = ASSETS / "download.png"
 BANNER = ASSETS / "banner.png"
 FALLBACK = ASSETS / "download.png"  # optional placeholder PNG
 
