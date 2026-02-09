@@ -84,23 +84,28 @@ with col2:
     show_image(BANNER)
 
     st.markdown(
-        """
-        <h1 style="margin-bottom:0;">Asekhona Tyutyuza</h1>
-        <h3 style="margin-top:4px; color:#9CA3AF;">
-            Aspiring Data Scientist & Machine Learning Engineer
-        </h3>
+    """
+    <h1 style="margin-bottom:0;">Asekhona Tyutyuza</h1>
+    <h3 style="margin-top:4px; color:#9CA3AF;">
+        Aspiring Data Scientist & Machine Learning Engineer
+    </h3>
 
-        <div style="display:flex; gap:14px; flex-wrap:wrap; margin-top:12px;">
-            <div>📍 South Africa</div>
-            <div>✉️ mailto:asekhonatyutyuza@gmail.comasekhonatyutyuza@gmail.com</a></div>
-            <div>
-                🔗
-                https://github.com/TYUTYU-BOT ·
-                https://www.linkedin.com/in/asekhona-tyutyuza-7504162b3
-            </div>
+    <div style="display:flex; gap:14px; flex-wrap:wrap; margin-top:12px;">
+        <div>📍 South Africa</div>
+        <div>
+            ✉️ <a href="mailto:asekhonatyutyuza@gmail.com">asekhonatyutyuza@gmail.com</a>
         </div>
-        """,
-        unsafe_allow_html=True,
+        <div>
+            🔗
+            <a href="https://github.com/TYUTYU-BOT" target="_blank" rel="noopener noreferrer">GitHub</a>
+            ·
+            <a href="https://www.linkedin.com/in/asekhona-tyutyuza-7504162b3" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+        </div>
+    </div>
+    """,
+    unsafe_allow_html=True,
+)
+
     )
 
 st.markdown("---")
