@@ -4,87 +4,99 @@ from pathlib import Path
 from typing import Optional
 import re
 
-# ---------------------------------------------------------
-# Page configuration
-# ---------------------------------------------------------
+# =========================================================
+# PAGE CONFIGURATION
+# =========================================================
 st.set_page_config(
-    page_title="Asekhona Tyutyuza • Research Profile",
+    page_title="Asekhona Tyutyuza | Research & Portfolio",
     page_icon="📘",
     layout="wide",
     initial_sidebar_state="expanded",
 )
 
-# ---------------------------------------------------------
-# Paths & constants
-# ---------------------------------------------------------
+# =========================================================
+# PATHS & CONSTANTS
+# =========================================================
 BASE_DIR = Path(__file__).parent
 ASSETS = BASE_DIR / "assets"
-AVATAR = ASSETS / "download (1).png"
-BANNER = ASSETS / "asekhona.png"
-FALLBACK = ASSETS / "download.png"  # optional placeholder PNG
 
-# ---------------------------------------------------------
-# Small helpers
-# ---------------------------------------------------------
+AVATAR   = ASSETS / "download (1).png"
+BANNER   = ASSETS / "asekhona.png"
+FALLBACK = ASSETS / "download.png"  # optional placeholder
+
+# =========================================================
+# HELPERS
+# =========================================================
 def badge(label, color="#4F46E5"):
-    """Return a pill/badge HTML (render with unsafe_allow_html=True)."""
     return f"""
-    <span style="background:{color}; padding:4px 10px; border-radius:999px; color:white; font-size:0.85rem; margin-right:6px; display:inline-block;">
+    <span style="
+        background:{color};
+        padding:4px 10px;
+        border-radius:999px;
+        color:white;
+        font-size:0.85rem;
+        margin-right:6px;
+        display:inline-block;">
         {label}
     </span>
     """
 
-def show_image(path: Path, caption: str = "", use_container_width=True, fallback: Optional[Path] = None):
-    """Safely show an image; optionally use a fallback if invalid or missing."""
+def show_image(
+    path: Path,
+    caption: str = "",
+    use_container_width=True,
+    fallback: Optional[Path] = None,
+):
     if path.exists():
         try:
             with Image.open(path) as img:
                 st.image(img, caption=caption, use_container_width=use_container_width)
                 return True
         except UnidentifiedImageError:
-            st.warning(f"Found '{path.as_posix()}' but it is not a valid image file. Please re-export as PNG.")
+            st.warning(f"{path.name} is not a valid image file.")
         except Exception as e:
-            st.error(f"Unexpected error reading {path.name}: {e}")
+            st.error(f"Error loading {path.name}: {e}")
     else:
-        st.info(f"Add an image to {path.as_posix()}")
+        st.info(f"Missing image: {path.as_posix()}")
 
     if fallback and fallback.exists():
         try:
             with Image.open(fallback) as img:
-                st.image(img, caption="(Placeholder)", use_container_width=use_container_width)
+                st.image(img, caption="Placeholder", use_container_width=use_container_width)
         except Exception:
             pass
     return False
 
 def valid_email(email: str) -> bool:
-    """Very light email sanity check (not full RFC)."""
     if not email:
         return False
     return re.match(r"^[^@\s]+@[^@\s]+\.[^@\s]+$", email) is not None
 
-# ---------------------------------------------------------
-# Header
-# ---------------------------------------------------------
+# =========================================================
+# HEADER
+# =========================================================
 col1, col2 = st.columns([1, 3], gap="large")
 
 with col1:
     show_image(AVATAR, caption="Asekhona Tyutyuza", fallback=FALLBACK)
 
 with col2:
-    show_image(BANNER, fallback=None)
+    show_image(BANNER)
 
-    st.markdown("")  # spacer
     st.markdown(
         """
-        <div style="display:flex; align-items:center; gap:12px; flex-wrap:wrap; line-height:1.6;">
-            <div>🎓 Student</div>
+        <h1 style="margin-bottom:0;">Asekhona Tyutyuza</h1>
+        <h3 style="margin-top:4px; color:#9CA3AF;">
+            Aspiring Data Scientist & Machine Learning Engineer
+        </h3>
+
+        <div style="display:flex; gap:14px; flex-wrap:wrap; margin-top:12px;">
             <div>📍 South Africa</div>
             <div>✉️ <a href="mailto:asekhonatyutyuza@gmail.com">asekhonatyutyuza@gmail.com</a></div>
             <div>
                 🔗
-                <a href="https://github.com/TYUTYU-BOT" target="_blank" rel="noopener noreferrer">GitHub</a>
-                ·
-                <a href="https://www.linkedin.com/in/asekhona-tyutyuza-7504162b3" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+                <a href="https://github.com/TYUTYU-BOT" target="_blank">GitHub</a> ·
+                <a href="https://www.linkedin.com/in/asekhona-tyutyuza-7504162b3" target="_blank">LinkedIn</a>
             </div>
         </div>
         """,
@@ -93,115 +105,151 @@ with col2:
 
 st.markdown("---")
 
-# ---------------------------------------------------------
-# About
-# ---------------------------------------------------------
+# =========================================================
+# ABOUT
+# =========================================================
 st.subheader("About")
-st.write(
+
+st.markdown(
     """
-    I'm **Asekhona Tyutyuza**, a student passionate about data, user‑centered design, and building helpful tools.
-    This profile showcases my interests, coursework projects, and research directions.
+    I am an aspiring data scientist with a strong interest in **machine learning,
+    data visualization, and applied analytics**. My work focuses on building
+    data-driven tools that transform raw data into clear, actionable insights.
+
+    I am particularly interested in **reproducible workflows**, **interactive
+    analytical applications**, and applying data science techniques to real-world
+    challenges in research and industry.
     """
 )
 
-# ---------------------------------------------------------
-# Research Interests
-# ---------------------------------------------------------
+# =========================================================
+# RESEARCH INTERESTS
+# =========================================================
 st.subheader("Research Interests")
+
 st.markdown(
-    badge("Data Visualization")
-    + badge("Human–Computer Interaction")
+    badge("Data Science & Analytics")
     + badge("Machine Learning", "#06B6D4")
-    + badge("Open Science", "#16A34A"),
+    + badge("Data Visualization")
+    + badge("Reproducible Research", "#16A34A"),
     unsafe_allow_html=True,
 )
 
 st.markdown("---")
 
-# ---------------------------------------------------------
-# Highlights
-# ---------------------------------------------------------
+# =========================================================
+# HIGHLIGHTS
+# =========================================================
 st.subheader("Highlights")
+
 left, right = st.columns(2)
+
 with left:
-    st.markdown("### 📌 Current Focus")
-    st.write(
+    st.markdown("### Current Focus")
+    st.markdown(
         """
-        • Reproducible data science workflows with Streamlit  
-        • Storytelling with data and accessible UI patterns  
-        • Building small, useful apps for students and researchers
+        - Data analysis and exploratory workflows in Python  
+        - Building interactive dashboards with Streamlit  
+        - Applying machine learning concepts to practical problems
         """
     )
+
 with right:
-    st.markdown("### 🧰 Skills")
-    st.write(
+    st.markdown("### Technical Skills")
+    st.markdown(
         """
-        • Python (pandas, numpy)  • Visualization (matplotlib, seaborn)  
-        • Streamlit  • Git/GitHub  • Technical Writing
+        - **Python:** pandas, numpy  
+        - **Visualization:** matplotlib, seaborn  
+        - **Tools:** Streamlit, Git, GitHub  
+        - **Other:** Technical writing, rapid prototyping
         """
     )
 
 st.markdown("---")
 
-# ---------------------------------------------------------
-# Featured Projects
-# ---------------------------------------------------------
+# =========================================================
+# EXPERIENCE & TRAINING
+# =========================================================
+st.subheader("Experience & Training")
+
+st.markdown(
+    """
+    **CHPC & NITheCS Coding Summer School — Data Science & Machine Learning**  
+    *January 2026 – February 2026*
+
+    - Intensive training in scientific computing and data science  
+    - Python-based ETL pipelines, exploratory data analysis, and visualization  
+    - Core concepts in machine learning, AI, probability, and statistics  
+    - Emphasis on reproducible research workflows and computational thinking
+    """
+)
+
+st.markdown("---")
+
+# =========================================================
+# FEATURED PROJECTS
+# =========================================================
 st.subheader("Featured Projects")
-proj1, proj2 = st.columns(2, gap="large")
 
-with proj1:
-    st.markdown("#### 🏆 MAISH 2025 Hackathon — 1st Place")
-    st.write(
+p1, p2 = st.columns(2, gap="large")
+
+with p1:
+    st.markdown("### 🏆 MAISH 2025 Hackathon — 1st Place")
+    st.markdown(
         """
-        AI‑powered agricultural solution supporting farmers with predictive insights for
-        smarter and more sustainable decisions (e.g., disease detection, supply optimization).
+        **Problem:** Limited access to timely, data-driven insights for farmers  
+        **Solution:** AI-powered agricultural decision-support system  
+        **Outcome:** 🥇 First place in a 3-day national hackathon
         """
     )
 
-    # --- Optional: real links (leave blank to hide) ---
-    SUMMARY_URL = ""  # e.g., "https://github.com/TYUTYU-BOT/maish-2025-hackathon#readme"
-    REPO_URL    = ""  # e.g., "https://github.com/TYUTYU-BOT/maish-2025-hackathon"
-    DEMO_URL    = ""  # e.g., "https://your-app.streamlit.app" or a YouTube demo
+    st.markdown(
+        """
+        - Applied machine learning concepts for predictive insights  
+        - Built data analysis pipelines under tight time constraints  
+        - Collaborated in a multidisciplinary team environment
+        """
+    )
 
-    link_cols = st.columns(3)
-    if SUMMARY_URL:
-        with link_cols[0]:
-            st.link_button("Summary", SUMMARY_URL)
-    if REPO_URL:
-        with link_cols[1]:
-            st.link_button("GitHub", REPO_URL)
-    if DEMO_URL:
-        with link_cols[2]:
-            st.link_button("Demo", DEMO_URL)
-
-with proj2:
-    st.markdown("#### 🗂️ Planned: Research Paper Organizer")
-    st.write("Concept to tag, filter, and export reading lists (CSV/JSON). Useful for literature reviews.")
+with p2:
+    st.markdown("### 📚 Planned Project — Research Paper Organizer")
+    st.markdown(
+        """
+        A lightweight tool to manage literature reviews by storing metadata,
+        tagging papers, filtering results, and exporting reading lists
+        to CSV or JSON formats.
+        """
+    )
 
 st.markdown("---")
 
-# ---------------------------------------------------------
-# Contact
-# ---------------------------------------------------------
+# =========================================================
+# CONTACT
+# =========================================================
 st.subheader("Contact")
+
 with st.form("contact_form"):
     name = st.text_input("Your name")
-    email = st.text_input("Email")
+    email = st.text_input("Email address")
     message = st.text_area("Message")
-    submitted = st.form_submit_button("Send")
+
+    submitted = st.form_submit_button("Send message")
 
     if submitted:
         errors = []
+
         if len(name.strip()) < 2:
             errors.append("Please enter your full name.")
         if not valid_email(email):
             errors.append("Please provide a valid email address.")
         if len(message.strip()) < 10:
-            errors.append("Please enter a brief message (≥ 10 characters).")
+            errors.append("Message must be at least 10 characters.")
 
         if errors:
             for e in errors:
                 st.warning(e)
         else:
-            # TODO: Connect to a real endpoint (Formspree, EmailJS, webhook).
-            st.success("Thanks! Your message has been recorded.")
+            st.success("Thank you — your message has been received.")
+
+st.markdown("---")
+st.caption("© 2026 Asekhona Tyutyuza · Data Science & Machine Learning Portfolio")
