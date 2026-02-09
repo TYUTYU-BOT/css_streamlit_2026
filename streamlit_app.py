@@ -15,13 +15,13 @@ st.set_page_config(
 )
 
 # =========================================================
-# PATHS & CONSTANTS
+# PATHS
 # =========================================================
 BASE_DIR = Path(__file__).parent
 ASSETS = BASE_DIR / "assets"
 
-AVATAR   = ASSETS / "download (1).png"
-BANNER   = ASSETS / "asekhona.png"
+AVATAR = ASSETS / "download (1).png"
+BANNER = ASSETS / "asekhona.png"
 FALLBACK = ASSETS / "download.png"
 
 # =========================================================
@@ -54,23 +54,12 @@ def show_image(
                 return True
         except UnidentifiedImageError:
             st.warning(f"{path.name} is not a valid image file.")
-        except Exception as e:
-            st.error(f"Error loading {path.name}: {e}")
-    else:
-        st.info(f"Missing image: {path.as_posix()}")
-
-    if fallback and fallback.exists():
-        try:
-            with Image.open(fallback) as img:
-                st.image(img, caption="Placeholder", use_container_width=use_container_width)
-        except Exception:
-            pass
+    elif fallback and fallback.exists():
+        st.image(Image.open(fallback), caption="Placeholder", use_container_width=use_container_width)
     return False
 
 def valid_email(email: str) -> bool:
-    if not email:
-        return False
-    return re.match(r"^[^@\s]+@[^@\s]+\.[^@\s]+$", email) is not None
+    return re.match(r"^[^@\s]+@[^@\s]+\.[^@\s]+$", email or "") is not None
 
 # =========================================================
 # HEADER
@@ -90,16 +79,24 @@ with col2:
             Aspiring Data Scientist & Machine Learning Engineer
         </h3>
 
-        <div style="display:flex; gap:14px; flex-wrap:wrap; margin-top:12px;">
+        <div style="display:flex; gap:16px; flex-wrap:wrap; margin-top:12px;">
             <div>📍 South Africa</div>
+
             <div>
-                ✉️ <a href="mailto:asekhonatyutyuza@gmail.com">
-                asekhonatyutyuza@gmail.com</a>
-                    <div>
+                ✉️
+                mailto:asekhonatyutyuza@gmail.com
+                    asekhonatyutyuza@gmail.com
+                </a>
+            </div>
+
+            <div>
                 🔗
                 https://github.com/TYUTYU-BOT
                 ·
-                https://www.linkedin.com/in/asekhona-tyutyuza-7504162b3
+                <a href="https://www.linkedin.com/in/asekhona-tyutyuza-7504162b3"
+                   target="_blank" rel="noopener noreferrer">
+                    LinkedIn
+                </a>
             </div>
         </div>
         """,
