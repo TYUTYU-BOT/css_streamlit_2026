@@ -46,11 +46,11 @@ with st.expander("What we built (overview)"):
     st.markdown(
         """
         Built an AI‑driven tool to support farmers with:
-        - **Crop & livestock disease detection**
+        - **Crop &amp; livestock disease detection**
         - **Supply optimization**
         - **Data‑informed decision support**
 
-        **Skills & Tools:** Rapid prototyping, teamwork under time constraints, Python, AI/ML concepts, data analysis.
+        **Skills &amp; Tools:** Rapid prototyping, teamwork under time constraints, Python, AI/ML concepts, data analysis.
 
         **Team:** Asekhona Tyutyuza, Brightness Mapule Masilela
         """
@@ -113,7 +113,7 @@ st.markdown("---")
 # =========================================================
 # CONCEPT / PLANNED PROJECTS (NOT YET BUILT)
 # =========================================================
-st.subheader("🧩 Concept & Planned Projects")
+st.subheader("🧩 Concept &amp; Planned Projects")
 st.caption("These are project ideas and learning exercises I understand and plan to implement.")
 
 # ---------- Concept Project 1 ----------
@@ -128,7 +128,7 @@ st.markdown(
     - Bar/line charts for trends and distribution
     - Summary metrics (average score, pass rate)
 
-    **Tools & Skills (planned):** Python, pandas, Streamlit, data visualization
+    **Tools &amp; Skills (planned):** Python, pandas, Streamlit, data visualization
     """
 )
 
@@ -152,7 +152,7 @@ st.markdown(
     - Tagging and quick search
     - Export reading list to CSV/JSON
 
-    **Tools & Skills (planned):** Python, Streamlit, basic data storage (CSV/SQLite)
+    **Tools &amp; Skills (planned):** Python, Streamlit, basic data storage (CSV/SQLite)
     """
 )
 
@@ -161,6 +161,37 @@ with c3:
     link_button_fallback("Planned repo", "https://github.com/TYUTYU-BOT")  # replace later
 with c4:
     link_button_fallback("Feature backlog", "https://www.notion.so/")      # replace later
+
+st.markdown("---")
+
+# =========================================================
+# 🎓 EXPERIENCE & TRAINING (ADDED)
+# =========================================================
+st.subheader("🎓 Experience & Training")
+
+st.markdown(
+    """
+    **CHPC & NITheCS Coding Summer School — Data Science & Machine Learning**  
+    *26 January – 6 February 2026 • 09:30–16:00 SAST (Mon–Fri)*
+
+    - Intensive training in **Scientific Computing, Data Science, and Machine Learning**  
+    - Python-based **ETL**, **Exploratory Data Analysis (EDA)**, and **data visualisation**  
+    - **Machine Learning & AI fundamentals**, **probability & statistics**, and **computational thinking**  
+    - Strengthened **terminal skills** and use of **AI-assisted tools**  
+    """)
+# Source: official flyer (dates, topics, and format)
+st.caption("Source: CHPC & NITheCS Coding Summer School 2026 flyer.")  # cite marker below
+# [1](https://universityofmpumalanga-my.sharepoint.com/personal/222221526_ump_ac_za/Documents/Microsoft%20Copilot%20Chat%20Files/CHPC%20NITheCS%20Coding%20Summer%20School%202026.pdf)
+
+e1, e2 = st.columns(2)
+with e1:
+    # More info / register (from the flyer)
+    link_button_fallback("More info / Register", "https://bit.ly/3L3qwc3")  # cite marker below
+    # [1](https://universityofmpumalanga-my.sharepoint.com/personal/222221526_ump_ac_za/Documents/Microsoft%20Copilot%20Chat%20Files/CHPC%20NITheCS%20Coding%20Summer%20School%202026.pdf)
+with e2:
+    # If you add the PDF to your repo (e.g., /assets/CHPC_NITheCS_2026.pdf),
+    # replace the URL below with the raw GitHub URL.
+    link_button_fallback("Certificate / Flyer (PDF)", "https://github.com/TYUTYU-BOT/css_streamlit_2026")
 
 st.markdown("---")
 
