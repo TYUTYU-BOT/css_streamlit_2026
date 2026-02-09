@@ -22,7 +22,7 @@ ASSETS = BASE_DIR / "assets"
 
 AVATAR   = ASSETS / "download (1).png"
 BANNER   = ASSETS / "asekhona.png"
-FALLBACK = ASSETS / "download.png"  # optional placeholder
+FALLBACK = ASSETS / "download.png"
 
 # =========================================================
 # HELPERS
@@ -92,11 +92,11 @@ with col2:
 
         <div style="display:flex; gap:14px; flex-wrap:wrap; margin-top:12px;">
             <div>📍 South Africa</div>
-            <div>✉️ <a href="mailto:asekhonatyutyuza@gmail.com">asekhonatyutyuza@gmail.com</a></div>
+            <div>✉️ mailto:asekhonatyutyuza@gmail.comasekhonatyutyuza@gmail.com</a></div>
             <div>
                 🔗
-                <a href="https://github.com/TYUTYU-BOT" target="_blank" rel="noopener noreferrer">GitHub</a> ·
-                <a href="https://www.linkedin.com/in/asekhona-tyutyuza-7504162b3" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+                https://github.com/TYUTYU-BOT ·
+                https://www.linkedin.com/in/asekhona-tyutyuza-7504162b3
             </div>
         </div>
         """,
@@ -253,4 +253,3 @@ with st.form("contact_form"):
 
 st.markdown("---")
 st.caption("© 2026 Asekhona Tyutyuza · Data Science & Machine Learning Portfolio")
-``
