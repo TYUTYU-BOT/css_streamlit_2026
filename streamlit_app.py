@@ -30,7 +30,6 @@ h2 { font-size: 2rem; margin-top: 2.5rem; }
 h3 { font-size: 1.4rem; }
 
 .card {
-    background-color: #020617;
     padding: 1.6rem;
     border-radius: 14px;
     border: 1px solid #1E293B;
