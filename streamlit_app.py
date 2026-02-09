@@ -15,7 +15,7 @@ st.set_page_config(
 )
 
 # =========================================================
-# GLOBAL STYLING (FONTS + THEME + CARDS)
+# GLOBAL STYLING
 # =========================================================
 st.markdown("""
 <style>
@@ -25,12 +25,10 @@ html, body, [class*="css"] {
     font-family: 'Inter', sans-serif;
 }
 
-/* Headings */
 h1 { font-size: 3rem; font-weight: 700; }
 h2 { font-size: 2rem; margin-top: 2.5rem; }
 h3 { font-size: 1.4rem; }
 
-/* Cards */
 .card {
     background-color: #020617;
     padding: 1.6rem;
@@ -43,13 +41,6 @@ h3 { font-size: 1.4rem; }
     box-shadow: 0 12px 30px rgba(56,189,248,0.15);
 }
 
-/* Sections */
-.section {
-    margin-top: 3rem;
-    margin-bottom: 3rem;
-}
-
-/* Links */
 a {
     color: #38BDF8;
     text-decoration: none;
@@ -108,7 +99,7 @@ def valid_email(email: str) -> bool:
     return re.match(r"^[^@\s]+@[^@\s]+\.[^@\s]+$", email or "") is not None
 
 # =========================================================
-# HERO / HEADER
+# HERO SECTION
 # =========================================================
 col1, col2 = st.columns([1, 3], gap="large")
 
@@ -119,21 +110,19 @@ with col2:
     show_image(BANNER)
 
     st.markdown("""
-    <div class="section">
-        <h1>Asekhona Tyutyuza</h1>
-        <p style="font-size:1.3rem;">
-            Aspiring <strong>Data Scientist</strong> &amp;
-            <strong>Machine Learning Engineer</strong>
-        </p>
+    <h1>Asekhona Tyutyuza</h1>
+    <p style="font-size:1.3rem;">
+        Aspiring <strong>Data Scientist</strong> &amp;
+        <strong>Machine Learning Engineer</strong>
+    </p>
 
-        <p>📍 South Africa</p>
+    <p>📍 South Africa</p>
 
-        <p>
-            ✉️ <strong>Email:</strong> asekhonatyutyuza@gmail.com<br>
-            🔗 <a href="https://github.com/TYUTYU-BOT" target="_blank">GitHub</a><br>
-            🔗 <a href="https://www.linkedin.com/in/asekhona-tyutyuza-7504162b3" target="_blank">LinkedIn</a>
-        </p>
-    </div>
+    <p>
+        ✉️ <strong>Email:</strong> asekhonatyutyuza@gmail.com<br>
+        🔗 <a href="https://github.com/TYUTYU-BOT" target="_blank">GitHub</a><br>
+        🔗 <a href="https://www.linkedin.com/in/asekhona-tyutyuza-7504162b3" target="_blank">LinkedIn</a>
+    </p>
     """, unsafe_allow_html=True)
 
 st.markdown("---")
@@ -147,10 +136,6 @@ st.markdown("""
 I am an aspiring data scientist with a strong interest in **machine learning,
 data visualization, and applied analytics**. My work focuses on building
 data-driven tools that transform raw data into clear, actionable insights.
-
-I am particularly interested in **reproducible workflows**, **interactive
-analytical applications**, and applying data science techniques to real-world
-challenges in research and industry.
 """)
 
 # =========================================================
@@ -180,9 +165,9 @@ with c1:
     <div class="card">
         <h3>🎯 Current Focus</h3>
         <ul>
-            <li>Data analysis & exploratory workflows in Python</li>
+            <li>Exploratory data analysis in Python</li>
             <li>Interactive dashboards with Streamlit</li>
-            <li>Applied machine learning concepts</li>
+            <li>Applied machine learning problems</li>
         </ul>
     </div>
     """, unsafe_allow_html=True)
@@ -192,68 +177,10 @@ with c2:
     <div class="card">
         <h3>🛠 Technical Skills</h3>
         <ul>
-            <li><strong>Python:</strong> pandas, numpy</li>
-            <li><strong>Visualization:</strong> matplotlib, seaborn</li>
-            <li><strong>Tools:</strong> Streamlit, Git, GitHub</li>
-            <li>Technical writing & rapid prototyping</li>
+            <li>Python (pandas, numpy)</li>
+            <li>matplotlib, seaborn</li>
+            <li>Streamlit, Git, GitHub</li>
         </ul>
-    </div>
-    """, unsafe_allow_html=True)
-
-st.markdown("---")
-
-# =========================================================
-# EXPERIENCE & TRAINING
-# =========================================================
-st.subheader("Experience & Training")
-
-st.markdown("""
-<div class="card">
-<strong>CHPC & NITheCS Coding Summer School — Data Science & Machine Learning</strong><br>
-<em>January 2026 – February 2026</em>
-
-<ul>
-    <li>Scientific computing and data science foundations</li>
-    <li>Python-based ETL pipelines and exploratory analysis</li>
-    <li>Core concepts in machine learning, AI, probability, and statistics</li>
-    <li>Strong emphasis on reproducible research workflows</li>
-</ul>
-</div>
-""", unsafe_allow_html=True)
-
-st.markdown("---")
-
-# =========================================================
-# FEATURED PROJECTS
-# =========================================================
-st.subheader("Featured Projects")
-
-p1, p2 = st.columns(2, gap="large")
-
-with p1:
-    st.markdown("""
-    <div class="card">
-        <h3>🏆 MAISH 2025 Hackathon — 1st Place</h3>
-        <p><strong>Problem:</strong> Limited access to timely, data-driven insights for farmers</p>
-        <p><strong>Solution:</strong> AI-powered agricultural decision-support system</p>
-        <p><strong>Outcome:</strong> 🥇 First place in a national hackathon</p>
-        <ul>
-            <li>Machine learning for predictive insights</li>
-            <li>Rapid data pipeline development</li>
-            <li>Collaborative problem-solving under pressure</li>
-        </ul>
-    </div>
-    """, unsafe_allow_html=True)
-
-with p2:
-    st.markdown("""
-    <div class="card">
-        <h3>📚 Planned Project — Research Paper Organizer</h3>
-        <p>
-        A lightweight tool to manage literature reviews by storing metadata,
-        tagging papers, filtering results, and exporting structured reading lists
-        to CSV or JSON formats.
-        </p>
     </div>
     """, unsafe_allow_html=True)
 
@@ -265,4 +192,21 @@ st.markdown("---")
 st.subheader("Contact")
 
 with st.form("contact_form"):
+    name = st.text_input("Your name")
+    email = st.text_input("Email address")
+    message = st.text_area("Message")
 
+    submitted = st.form_submit_button("Send message 🚀")
+
+    if submitted:
+        if len(name.strip()) < 2:
+            st.warning("Please enter your full name.")
+        elif not valid_email(email):
+            st.warning("Please provide a valid email address.")
+        elif len(message.strip()) < 10:
+            st.warning("Message must be at least 10 characters.")
+        else:
+            st.success("Thank you — your message has been received.")
+
+st.markdown("---")
+st.caption("© 2026 Asekhona Tyutyuza · Data Science & Machine Learning Portfolio")
