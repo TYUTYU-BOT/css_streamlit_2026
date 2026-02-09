@@ -95,8 +95,8 @@ with col2:
             <div>✉️ <a href="mailto:asekhonatyutyuza@gmail.com">asekhonatyutyuza@gmail.com</a></div>
             <div>
                 🔗
-                <a href="https://github.com/TYUTYU-BOT" target="_blank">GitHub</a> ·
-                <a href="https://www.linkedin.com/in/asekhona-tyutyuza-7504162b3" target="_blank">LinkedIn</a>
+                <a href="https://github.com/TYUTYU-BOT" target="_blank" rel="noopener noreferrer">GitHub</a> ·
+                <a href="https://www.linkedin.com/in/asekhona-tyutyuza-7504162b3" target="_blank" rel="noopener noreferrer">LinkedIn</a>
             </div>
         </div>
         """,
@@ -253,3 +253,4 @@ with st.form("contact_form"):
 
 st.markdown("---")
 st.caption("© 2026 Asekhona Tyutyuza · Data Science & Machine Learning Portfolio")
+``
