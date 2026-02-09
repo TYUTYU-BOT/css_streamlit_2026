@@ -74,33 +74,16 @@ with col2:
 
     st.markdown(
         """
-        <h1 style="margin-bottom:0;">Asekhona Tyutyuza</h1>
-        <h3 style="margin-top:4px; color:#9CA3AF;">
-            Aspiring Data Scientist & Machine Learning Engineer
-        </h3>
+# Asekhona Tyutyuza
+### Aspiring Data Scientist & Machine Learning Engineer
 
-        <div style="display:flex; gap:16px; flex-wrap:wrap; margin-top:12px;">
-            <div>📍 South Africa</div>
+📍 **South Africa**
 
-            <div>
-                ✉️
-                mailto:asekhonatyutyuza@gmail.com
-                    asekhonatyutyuza@gmail.com
-                </a>
-            </div>
+✉️ **Email:** asekhonatyutyuza@gmail.com  
 
-            <div>
-                🔗
-                https://github.com/TYUTYU-BOT
-                ·
-                <a href="https://www.linkedin.com/in/asekhona-tyutyuza-7504162b3"
-                   target="_blank" rel="noopener noreferrer">
-                    LinkedIn
-                </a>
-            </div>
-        </div>
-        """,
-        unsafe_allow_html=True,
+🔗 **GitHub:** https://github.com/TYUTYU-BOT  
+🔗 **LinkedIn:** https://www.linkedin.com/in/asekhona-tyutyuza-7504162b3
+"""
     )
 
 st.markdown("---")
@@ -112,14 +95,14 @@ st.subheader("About")
 
 st.markdown(
     """
-    I am an aspiring data scientist with a strong interest in **machine learning,
-    data visualization, and applied analytics**. My work focuses on building
-    data-driven tools that transform raw data into clear, actionable insights.
+I am an aspiring data scientist with a strong interest in **machine learning,
+data visualization, and applied analytics**. My work focuses on building
+data-driven tools that transform raw data into clear, actionable insights.
 
-    I am particularly interested in **reproducible workflows**, **interactive
-    analytical applications**, and applying data science techniques to real-world
-    challenges in research and industry.
-    """
+I am particularly interested in **reproducible workflows**, **interactive
+analytical applications**, and applying data science techniques to real-world
+challenges in research and industry.
+"""
 )
 
 # =========================================================
@@ -148,21 +131,21 @@ with left:
     st.markdown("### Current Focus")
     st.markdown(
         """
-        - Data analysis and exploratory workflows in Python  
-        - Building interactive dashboards with Streamlit  
-        - Applying machine learning concepts to practical problems
-        """
+- Data analysis and exploratory workflows in Python  
+- Building interactive dashboards with Streamlit  
+- Applying machine learning concepts to practical problems
+"""
     )
 
 with right:
     st.markdown("### Technical Skills")
     st.markdown(
         """
-        - **Python:** pandas, numpy  
-        - **Visualization:** matplotlib, seaborn  
-        - **Tools:** Streamlit, Git, GitHub  
-        - **Other:** Technical writing, rapid prototyping
-        """
+- **Python:** pandas, numpy  
+- **Visualization:** matplotlib, seaborn  
+- **Tools:** Streamlit, Git, GitHub  
+- **Other:** Technical writing, rapid prototyping
+"""
     )
 
 st.markdown("---")
@@ -174,14 +157,14 @@ st.subheader("Experience & Training")
 
 st.markdown(
     """
-    **CHPC & NITheCS Coding Summer School — Data Science & Machine Learning**  
-    *January 2026 – February 2026*
+**CHPC & NITheCS Coding Summer School — Data Science & Machine Learning**  
+*January 2026 – February 2026*
 
-    - Intensive training in scientific computing and data science  
-    - Python-based ETL pipelines, exploratory data analysis, and visualization  
-    - Core concepts in machine learning, AI, probability, and statistics  
-    - Emphasis on reproducible research workflows and computational thinking
-    """
+- Intensive training in scientific computing and data science  
+- Python-based ETL pipelines, exploratory data analysis, and visualization  
+- Core concepts in machine learning, AI, probability, and statistics  
+- Emphasis on reproducible research workflows and computational thinking
+"""
 )
 
 st.markdown("---")
@@ -197,28 +180,24 @@ with p1:
     st.markdown("### 🏆 MAISH 2025 Hackathon — 1st Place")
     st.markdown(
         """
-        **Problem:** Limited access to timely, data-driven insights for farmers  
-        **Solution:** AI-powered agricultural decision-support system  
-        **Outcome:** 🥇 First place in a 3-day national hackathon
-        """
-    )
+**Problem:** Limited access to timely, data-driven insights for farmers  
+**Solution:** AI-powered agricultural decision-support system  
+**Outcome:** 🥇 First place in a 3-day national hackathon
 
-    st.markdown(
-        """
-        - Applied machine learning concepts for predictive insights  
-        - Built data analysis pipelines under tight time constraints  
-        - Collaborated in a multidisciplinary team environment
-        """
+- Applied machine learning concepts for predictive insights  
+- Built data analysis pipelines under tight time constraints  
+- Collaborated in a multidisciplinary team environment
+"""
     )
 
 with p2:
     st.markdown("### 📚 Planned Project — Research Paper Organizer")
     st.markdown(
         """
-        A lightweight tool to manage literature reviews by storing metadata,
-        tagging papers, filtering results, and exporting reading lists
-        to CSV or JSON formats.
-        """
+A lightweight tool to manage literature reviews by storing metadata,
+tagging papers, filtering results, and exporting reading lists
+to CSV or JSON formats.
+"""
     )
 
 st.markdown("---")
